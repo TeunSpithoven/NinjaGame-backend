@@ -10,6 +10,10 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 
+DOCKER:
+docker build --tag ninjagame-backend .
+docker run --publish 8000:8000 ninjagame-backend
+
 API CALLS:
 
 VOOR FRONT-END:
