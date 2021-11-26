@@ -5,7 +5,7 @@ from .models import Game
 from .permissions import IsOwnerOrReadOnly
 from .serializers import GameSerializer
 from .pagination import CustomPagination
-from .filters import GameFilter
+# from .filters import GameFilter
 
 
 class ListCreateGameAPIView(ListCreateAPIView):
@@ -14,7 +14,7 @@ class ListCreateGameAPIView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     pagination_class = CustomPagination
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_class = GameFilter
+    # filterset_class = GameFilter
 
     def perform_create(self, serializer):
         # Assign the user who created the game

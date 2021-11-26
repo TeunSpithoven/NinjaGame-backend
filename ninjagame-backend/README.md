@@ -36,20 +36,13 @@ Endpoint |HTTP Method | CRUD Method | Result
 ## Use
 We can test the API using [curl](https://curl.haxx.se/) or [httpie](https://github.com/jakubroztocil/httpie#installation), or we can use [Postman](https://www.postman.com/)
 
-Httpie is a user-friendly http client that's written in Python. Let's try and install that.
-
-You can install httpie using pip:
-```
-pip install httpie
-```
-
 First, we have to start up Django's development server.
 ```
 python manage.py runserver
 ```
 Only authenticated users can use the API services, for that reason if we try this:
 ```
-http  http://127.0.0.1:8000/api/v1/movies/
+http  http://127.0.0.1:8000/movies/
 ```
 we get:
 ```
@@ -59,7 +52,7 @@ we get:
 ```
 Instead, if we try to access with credentials:
 ```
-http http://127.0.0.1:8000/api/v1/movies/3 "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MjA4Mjk1LCJqdGkiOiI4NGNhZmMzMmFiZDA0MDQ2YjZhMzFhZjJjMmRiNjUyYyIsInVzZXJfaWQiOjJ9.NJrs-sXnghAwcMsIWyCvE2RuGcQ3Hiu5p3vBmLkHSvM"
+http http://127.0.0.1:8000/movies/3 "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MjA4Mjk1LCJqdGkiOiI4NGNhZmMzMmFiZDA0MDQ2YjZhMzFhZjJjMmRiNjUyYyIsInVzZXJfaWQiOjJ9.NJrs-sXnghAwcMsIWyCvE2RuGcQ3Hiu5p3vBmLkHSvM"
 ```
 we get the movie with id = 3
 ```
@@ -70,14 +63,14 @@ we get the movie with id = 3
 
 First we need to create a user, so we can log in
 ```
-http POST http://127.0.0.1:8000/api/v1/auth/register/ email="email@email.com" username="USERNAME" password1="PASSWORD" password2="PASSWORD"
+http POST http://127.0.0.1:8000/auth/register/ username="USERNAME" password1="PASSWORD" password2="PASSWORD"
 ```
 
 After we create an account we can use those credentials to get a token
 
 To get a token first we need to request
 ```
-http http://127.0.0.1:8000/api/v1/auth/token/ username="username" password="password"
+http POST http://127.0.0.1:8000/auth/token/ username="username" password="password"
 ```
 after that, we get the token
 ```
@@ -102,48 +95,22 @@ and we will get a new access token
 
 
 The API has some restrictions:
--   The movies are always associated with a creator (user who created it).
--   Only authenticated users may create and see movies.
--   Only the creator of a movie may update or delete it.
+-   The games are always associated with a creator (user who created it).
+-   Only authenticated users may create and get games.
 -   The API doesn't allow unauthenticated requests.
 
 ### Commands
 ```
-Get all movies
-http http://127.0.0.1:8000/api/v1/movies/ "Authorization: Bearer {YOUR_TOKEN}" 
+Get all games
+http http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}" 
 Get a single movie
-http GET http://127.0.0.1:8000/api/v1/movies/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" 
+http GET http://127.0.0.1:8000/games/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" 
 Create a new movie
-http POST http://127.0.0.1:8000/api/v1/movies/ "Authorization: Bearer {YOUR_TOKEN}" title="Ant Man and The Wasp" genre="Action" year=2018 
+http POST http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}" title="Ant Man and The Wasp" genre="Action" year=2018 
 Full update a movie
-http PUT http://127.0.0.1:8000/api/v1/movies/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" genre="Action" year=2018
+http PUT http://127.0.0.1:8000/games/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" genre="Action" year=2018
 Partial update a movie
-http PATCH http://127.0.0.1:8000/api/v1/movies/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" 
+http PATCH http://127.0.0.1:8000/games/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" 
 Delete a movie
-http DELETE http://127.0.0.1:8000/api/v1/movies/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}"
+http DELETE http://127.0.0.1:8000/games/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}"
 ```
-
-### Pagination
-The API supports pagination, by default responses have a page_size=10 but if you want change that you can pass through params page_size={your_page_size_number}
-```
-http http://127.0.0.1:8000/api/v1/movies/?page=1 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?page=3 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?page=3&page_size=15 "Authorization: Bearer {YOUR_TOKEN}"
-```
-
-### Filters
-The API supports filtering, you can filter by the attributes of a movie like this
-```
-http http://127.0.0.1:8000/api/v1/movies/?title="AntMan" "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?year=2020 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?year__gt=2019&year__lt=2022 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?genre="Action" "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?creator__username="myUsername" "Authorization: Bearer {YOUR_TOKEN}"
-```
-
-You can also combine multiples filters like so
-```
-http http://127.0.0.1:8000/api/v1/movies/?title="AntMan"&year=2020 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?year__gt=2019&year__lt=2022&genre="Action" "Authorization: Bearer {YOUR_TOKEN}"
-```
-

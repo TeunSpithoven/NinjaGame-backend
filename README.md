@@ -17,13 +17,13 @@ docker run --publish 8000:8000 ninjagame-backend
 API CALLS:
 
 VOOR FRONT-END:
-register: http://127.0.0.1:8000/api/v1/auth/register/ username="USERNAME" password="PASSWORD" password2="PASSWORD"
-get auth token/login: http://127.0.0.1:8000/api/v1/auth/token/ username="username" password="password"
+register: http://127.0.0.1:8000/auth/register/ username="USERNAME" password="PASSWORD" password2="PASSWORD"
+get auth token/login: http://127.0.0.1:8000/auth/token/ username="username" password="password"
 	return: refresh & acces token
-new auth token: http://127.0.0.1:8000/api/v1/auth/token/refresh/ refresh="REFRESH TOKEN"
+new auth token: http://127.0.0.1:8000/auth/token/refresh/ refresh="REFRESH TOKEN"
 
-add game: http://127.0.0.1:8000/api/v1/games/ "Authorization: Bearer {YOUR_TOKEN}" title="Ant Man and The Wasp" genre="Action" year=2018
-get all games: http://127.0.0.1:8000/api/v1/games/ "Authorization: Bearer {YOUR_TOKEN}"
+add game: http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}" title="Ant Man and The Wasp" genre="Action" year=2018
+get all games: http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}"
 
 VOOR BACK-END:
-update game score: http://127.0.0.1:8000/api/v1/game/{game_id}/ "Authorization: Bearer {YOUR_TOKEN}" score="SCORE"
+update game score: http://127.0.0.1:8000/game/{game_id}/ "Authorization: Bearer {YOUR_TOKEN}" score="SCORE"
