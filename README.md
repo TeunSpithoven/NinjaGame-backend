@@ -3,12 +3,12 @@ python default image
 in de root:
 de repo clonen
 python -m venv env
-env\Scripts\activate 
+env\Scripts\activate
 
 cd ninjagame-backend
 pip install -r requirements.txt
 python manage.py migrate
-python manage.py runserver
+python manage.py runserver 8000
 
 DOCKER:
 docker build --tag ninjagame-backend .
