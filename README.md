@@ -3,7 +3,7 @@ python default image
 in de root:
 de repo clonen
 python -m venv env
-env\Scripts\activate 
+env\Scripts\activate
 
 cd ninjagame-backend
 pip install -r requirements.txt

@@ -13,5 +13,5 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        # Write permissions are only allowed to the creator of the movie
-        return obj.creator == request.user
+        # Write permissions are only allowed to the creator of the game
+        return obj.user == request.user

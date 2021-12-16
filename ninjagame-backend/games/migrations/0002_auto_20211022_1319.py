@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('end_datetime', models.DateTimeField()),
                 ('score', models.IntegerField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='movies', to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='games', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'ordering': ['-id'],

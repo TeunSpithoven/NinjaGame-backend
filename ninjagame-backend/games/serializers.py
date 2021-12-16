@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class GameSerializer(serializers.ModelSerializer):  # create class to serializer model
-    creator = serializers.ReadOnlyField(source='creator.username')
+    user = serializers.ReadOnlyField(source='user.username')
 
     class Meta:
         model = Game
@@ -12,7 +12,7 @@ class GameSerializer(serializers.ModelSerializer):  # create class to serializer
 
 
 class UserSerializer(serializers.ModelSerializer):  # create class to serializer user model
-    movies = serializers.PrimaryKeyRelatedField(many=True, queryset=Game.objects.all())
+    games = serializers.PrimaryKeyRelatedField(many=True, queryset=Game.objects.all())
 
     class Meta:
         model = User

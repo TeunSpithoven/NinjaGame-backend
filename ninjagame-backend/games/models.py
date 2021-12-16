@@ -6,7 +6,7 @@ class Game(models.Model):
     end_datetime = models.DateTimeField()
     score = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey('auth.User', related_name='movies', on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', related_name='games', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-id']

@@ -18,7 +18,7 @@ class ListCreateGameAPIView(ListCreateAPIView):
 
     def perform_create(self, serializer):
         # Assign the user who created the game
-        serializer.save(creator=self.request.user)
+        serializer.save(user=self.request.user)
 
 
 class UpdateGameAPIView(UpdateAPIView):

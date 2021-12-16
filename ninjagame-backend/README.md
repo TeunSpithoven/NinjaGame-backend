@@ -27,11 +27,11 @@ In our case, we have one single resource, `movies`, so we will use the following
 
 Endpoint |HTTP Method | CRUD Method | Result
 -- | -- |-- |--
-`movies` | GET | READ | Get all movies
-`movies/:id` | GET | READ | Get a single movie
-`movies`| POST | CREATE | Create a new movie
-`movies/:id` | PUT | UPDATE | Update a movie
-`movies/:id` | DELETE | DELETE | Delete a movie
+`games` | GET | READ | Get all games
+`games/:id` | GET | READ | Get a single game
+`games`| POST | CREATE | Create a new game
+`games/:id` | PUT | UPDATE | Update a game
+`games/:id` | DELETE | DELETE | Delete a game
 
 ## Use
 We can test the API using [curl](https://curl.haxx.se/) or [httpie](https://github.com/jakubroztocil/httpie#installation), or we can use [Postman](https://www.postman.com/)
@@ -42,7 +42,7 @@ python manage.py runserver
 ```
 Only authenticated users can use the API services, for that reason if we try this:
 ```
-http  http://127.0.0.1:8000/movies/
+http  http://127.0.0.1:8000/games/
 ```
 we get:
 ```
@@ -52,7 +52,7 @@ we get:
 ```
 Instead, if we try to access with credentials:
 ```
-http http://127.0.0.1:8000/movies/3 "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MjA4Mjk1LCJqdGkiOiI4NGNhZmMzMmFiZDA0MDQ2YjZhMzFhZjJjMmRiNjUyYyIsInVzZXJfaWQiOjJ9.NJrs-sXnghAwcMsIWyCvE2RuGcQ3Hiu5p3vBmLkHSvM"
+http http://127.0.0.1:8000/games/3 "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MjA4Mjk1LCJqdGkiOiI4NGNhZmMzMmFiZDA0MDQ2YjZhMzFhZjJjMmRiNjUyYyIsInVzZXJfaWQiOjJ9.NJrs-sXnghAwcMsIWyCvE2RuGcQ3Hiu5p3vBmLkHSvM"
 ```
 we get the movie with id = 3
 ```
@@ -103,14 +103,14 @@ The API has some restrictions:
 ```
 Get all games
 http http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}" 
-Get a single movie
-http GET http://127.0.0.1:8000/games/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" 
-Create a new movie
+Get a single game
+http GET http://127.0.0.1:8000/games/{game_id}/ "Authorization: Bearer {YOUR_TOKEN}" 
+Create a new game
 http POST http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}" title="Ant Man and The Wasp" genre="Action" year=2018 
-Full update a movie
-http PUT http://127.0.0.1:8000/games/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" genre="Action" year=2018
-Partial update a movie
-http PATCH http://127.0.0.1:8000/games/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" 
-Delete a movie
-http DELETE http://127.0.0.1:8000/games/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}"
+Full update a game
+http PUT http://127.0.0.1:8000/games/{game_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" genre="Action" year=2018
+Partial update a game
+http PATCH http://127.0.0.1:8000/games/{game_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" 
+Delete a game
+http DELETE http://127.0.0.1:8000/games/{game_id}/ "Authorization: Bearer {YOUR_TOKEN}"
 ```
