@@ -10,4 +10,3 @@ class RegisterTestCase(TestCase):
         user = User.objects.get(username="testRegisterUsername")
         self.assertIsNotNone(user)
         self.assertEqual(user.username, "testRegisterUsername")
-        

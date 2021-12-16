@@ -13,5 +13,3 @@ class Game(models.Model):
 
     class Meta:
         ordering = ['-id']
-
-
