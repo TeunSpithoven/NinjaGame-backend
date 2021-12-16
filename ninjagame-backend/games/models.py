@@ -8,6 +8,9 @@ class Game(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey('auth.User', related_name='games', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.score
+
     class Meta:
         ordering = ['-id']
 
