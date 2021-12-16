@@ -26,6 +26,15 @@ jobs:
         cd ninjagame-backend
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Lint with flake8
+      run: |
+        flake8
+    - name: Coverage report
+      run: |
+        cd ninjagame-backend
+        pip install coverage
+        coverage run manage.py test test
+        coverage report
     - name: Run Tests
       run: |
         cd ninjagame-backend
