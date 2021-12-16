@@ -28,6 +28,7 @@ jobs:
         pip install -r requirements.txt
     - name: Lint with flake8
       run: |
+        cd ninjagame-backend
         flake8
     - name: Coverage report
       run: |
