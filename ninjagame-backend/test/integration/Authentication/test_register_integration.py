@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 class RegisterIntegrationTestCase(TestCase):
     def test_register(self):
         # register_url = reverse('rest_register')
@@ -16,3 +17,4 @@ class RegisterIntegrationTestCase(TestCase):
         user = User.objects.get(username="hutser")
         self.assertIsNotNone(user)
         self.assertEqual(user.username, "hutser")
+        

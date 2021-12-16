@@ -25,8 +25,3 @@ class UpdateGameAPIView(UpdateAPIView):
     serializer_class = GameSerializer
     queryset = Game.objects.all()
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
-
-
-
-
-
