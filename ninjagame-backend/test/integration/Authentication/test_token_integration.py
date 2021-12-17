@@ -1,4 +1,3 @@
-from django.http.response import JsonResponse
 from django.test import TestCase
 
 
