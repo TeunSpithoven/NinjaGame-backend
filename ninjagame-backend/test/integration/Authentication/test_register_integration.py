@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 class RegisterIntegrationTestCase(TestCase):
     def test_register(self):
-        # register_url = reverse('rest_register')
         register_data = {
             "username": "hutser",
             "password": "passwordhutser1!",
