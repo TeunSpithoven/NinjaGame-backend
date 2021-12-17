@@ -2,7 +2,7 @@ FROM python:3-slim-buster
 
 ENV PYTHONUNBUFFERED 1
 
-# WORKDIR /app
+WORKDIR /app
 WORKDIR /ninjagame-backend
 
 COPY requirements.txt requirements.txt
