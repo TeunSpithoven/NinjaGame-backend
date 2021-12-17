@@ -27,7 +27,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: TeunSpithoven/NinjaGame-backend
+          images: TeunSpithoven/NinjaGame-backend/ninjagame-backend
 
       - name: Build and push
         uses: docker/build-push-action@v2
