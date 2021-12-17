@@ -1,14 +1,6 @@
 ## NinjaGame-Backend
 This is the back-end web server for my school project.
 
-### Docker
-```
-docker build --tag ninjagame-backend .
-```
-```
-docker run --publish 8000:8000 ninjagame-backend
-```
-
 ### Dev setup
 ##### clone this repo
 ##### Setup a python virtual enviroment
@@ -50,3 +42,6 @@ add game: http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}" titl
 get all games: http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}"
 
 update game score: http://127.0.0.1:8000/game/{game_id}/ "Authorization: Bearer {YOUR_TOKEN}" score="SCORE"
+
+### Docker
+the docker container can be found on docker hub at: tuin/ninjagame-backend
