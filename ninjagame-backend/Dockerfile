@@ -2,7 +2,7 @@ FROM python:3-slim-buster
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
+COPY ninjagame-backend/requirements.txt ninjagame-backend/requirements.txt
 RUN pip3 install -r requirements.txt
 
 COPY . .
