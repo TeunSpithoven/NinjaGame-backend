@@ -1,6 +1,6 @@
-python default image
+DOCKER: docker build --tag ninjagame-backend . docker run --publish 8000:8000 ninjagame-backend
 
-in de root:
+Dev setup:
 de repo clonen
 ```
 python -m venv env
