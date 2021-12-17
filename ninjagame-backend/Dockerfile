@@ -1,5 +1,7 @@
 FROM python:3-slim-buster
 
+ENV PYTHONUNBUFFERED 1
+
 WORKDIR /app
 
 COPY ninjagame-backend/requirements.txt ninjagame-backend/requirements.txt
