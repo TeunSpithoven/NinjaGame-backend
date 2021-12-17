@@ -33,7 +33,7 @@ python manage.py runserver
 register: http://127.0.0.1:8000/auth/register/ username="USERNAME" password="PASSWORD" password2="PASSWORD"
 
 get token: http://127.0.0.1:8000/auth/token/ username="username" password="password"
-	return: refresh & acces token
+return: refresh & acces token
 
 refresh token: http://127.0.0.1:8000/auth/token/refresh/ refresh="REFRESH TOKEN"
 
