@@ -27,7 +27,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: TeunSpithoven/NinjaGame-backend/ninjagame-backend
+          images: tuin/ninjagame-backend
           tags: |
               type=ref,event=branch
               type=sha
