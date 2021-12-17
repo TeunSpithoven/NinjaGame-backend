@@ -1,9 +1,9 @@
 FROM python:3-slim-buster
 
-WORKDIR /app
+WORKDIR /app/ninjagame-backend
 
-COPY ninjagame-backend/requirements.txt ninjagame-backend/requirements.txt
-RUN pip3 install -r ninjagame-backend/requirements.txt
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY . .
 
