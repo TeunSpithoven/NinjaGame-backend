@@ -14,15 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - uses: azure/docker-login@v1
+      - name: Login to Azure
+        uses: azure/docker-login@v1
         with:
-          login-server: yourACRname.azurecr.io
+          login-server: ninjagamebackend.azurecr.io
           username: ${{ secrets.AZURE_USERNAME }}
           password: ${{ secrets.AZURE_PASSWORD }}
 
       - run: |
-          docker build . -t ninjagamebackend.azurecr.io/appdb:${{ github.sha }}
-          docker push ninjagamebackend.azurecr.io/appdb:${{ github.sha }}
+          docker build . -t ninjagamebackend.azurecr.io/ninjagame-backend:${{ github.sha }}
+          docker push ninjagamebackend.azurecr.io/ninjagame-backend:${{ github.sha }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
