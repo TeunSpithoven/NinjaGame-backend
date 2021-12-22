@@ -11,10 +11,6 @@ python -m venv env
 ```
 env\Scripts\activate
 ```
-##### Change to the ninjagame-backend directory
-```
-cd ninjagame-backend
-```
 ##### Install requirements
 ```
 pip install -r requirements.txt
