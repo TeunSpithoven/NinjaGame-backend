@@ -35,7 +35,6 @@ jobs:
         coverage report
     - name: Run Tests
       run: |
-        cd ninjagame-backend
         python manage.py test test
 
     - name: Install Docker
