@@ -23,16 +23,13 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
-        cd ninjagame-backend
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Lint with flake8
       run: |
-        cd ninjagame-backend
         flake8
     - name: Coverage report
       run: |
-        cd ninjagame-backend
         pip install coverage
         coverage run manage.py test test
         coverage report
