@@ -42,10 +42,6 @@ jobs:
     - name: Login to Docker
       run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
     - name: Build Image
-      env:
-        IMAGE_TAG: ${{ github.sha }}
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ninjagame-backend:$IMAGE_TAG .
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ninjagame-backend:latest .
     - name: Push Image
-      env:
-        IMAGE_TAG: ${{ github.sha }}
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/ninjagame-backend:$IMAGE_TAG
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/ninjagame-backend:latest
