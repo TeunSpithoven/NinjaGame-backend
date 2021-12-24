@@ -1,5 +1,5 @@
 ## NinjaGame-Backend
-This is the back-end web server for my school project
+This is the back-end web server for my school project.
 
 ### Dev setup
 ##### clone this repo
