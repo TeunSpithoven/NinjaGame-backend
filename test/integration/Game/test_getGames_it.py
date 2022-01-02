@@ -1,6 +1,5 @@
 from django.test import TestCase
 # from django.urls import reverse
-from games.models import Game
 
 
 class RegisterIntegrationTestCase(TestCase):
@@ -17,7 +16,7 @@ class RegisterIntegrationTestCase(TestCase):
         }
         response = self.client.post('/auth/token/', login_data)
         self.accessToken = response.data["access"]
-        self.bearer = {'HTTP_AUTHORIZATION':'Bearer {}'.format(self.accessToken)}
+        self.bearer = {'HTTP_AUTHORIZATION': 'Bearer {}'.format(self.accessToken)}
 
         game_data = {
             "start_datetime": "2019-12-10 14:43:35.542195",
@@ -34,7 +33,7 @@ class RegisterIntegrationTestCase(TestCase):
 
         l1 = len(results[0]["start_datetime"])
         l2 = len(results[0]["end_datetime"])
- 
+
         results[0]["start_datetime"] = results[0]["start_datetime"][:l1-1]
         results[0]["end_datetime"] = results[0]["end_datetime"][:l2-1]
 

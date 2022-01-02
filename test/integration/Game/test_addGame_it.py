@@ -17,7 +17,7 @@ class RegisterIntegrationTestCase(TestCase):
         }
         response = self.client.post('/auth/token/', login_data)
         self.accessToken = response.data["access"]
-        self.bearer = {'HTTP_AUTHORIZATION':'Bearer {}'.format(self.accessToken)}
+        self.bearer = {'HTTP_AUTHORIZATION': 'Bearer {}'.format(self.accessToken)}
 
     def test_addGame(self):
         game_data = {
