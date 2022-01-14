@@ -25,7 +25,7 @@ SECRET_KEY = 'ftov1!91yf@7f7&g2%*@0_e^)ac&f&9jeloc@#v76#^b1dhbl#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -36,13 +36,15 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "*",
-    "http://127.0.0.1:8080",
-    "http://localhost:8080",
-    # 'www.djangoproject.dev',
-    # 'docs.djangoproject.dev',
-]
+CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ALLOWED_ORIGINS = [
+#     "*",
+#     "http://127.0.0.1:8080",
+#     "http://localhost:8080",
+#     # 'www.djangoproject.dev',
+#     # 'docs.djangoproject.dev',
+# ]
 
 # Application definition
 
