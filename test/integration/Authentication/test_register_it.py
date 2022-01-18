@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class RegisterIntegrationTestCase(TestCase):
-    def test_register(self):
+    def test_register_success(self):
         register_data = {
             "username": "hutser",
             "password": "passwordhutser1!",
@@ -16,3 +16,15 @@ class RegisterIntegrationTestCase(TestCase):
         user = User.objects.get(username="hutser")
         self.assertIsNotNone(user)
         self.assertEqual(user.username, "hutser")
+
+    def test_register_mustBeUnique(self):
+        register_data = {
+            "username": "hutser",
+            "password": "passwordhutser1!",
+            "password2": "passwordhutser1!"
+        }
+        response = self.client.post('/auth/register/', register_data)
+        response = self.client.post('/auth/register/', register_data)
+        code = response.data["username"][0]
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(code, "This field must be unique.")
