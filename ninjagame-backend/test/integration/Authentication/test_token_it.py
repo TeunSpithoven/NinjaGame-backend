@@ -10,7 +10,7 @@ class LoginIntegrationTestCase(TestCase):
         }
         self.client.post('/auth/register/', register_data)
 
-    def test_login(self):
+    def test_login_success(self):
         login_data = {
             "username": "testLoginUsername",
             "password": "passwordhutser1!"
@@ -20,3 +20,14 @@ class LoginIntegrationTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIsNotNone(jsonResponse["access"])
         self.assertIsNotNone(jsonResponse["refresh"])
+
+    def test_login_failure(self):
+        login_data = {
+            "username": "testLoginUsername",
+            "password": "passwo"
+        }
+        response = self.client.post('/auth/token/', login_data)
+        jsonResponse = response.data
+        self.assertNotEqual(response.status_code, 200)
+        # self.assertIsNotNone(jsonResponse["access"])
+        # self.assertIsNotNone(jsonResponse["refresh"])
