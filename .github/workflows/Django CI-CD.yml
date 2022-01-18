@@ -1,4 +1,4 @@
-name: Django CI
+name: Django CI-CD
 
 on:
   push:
@@ -23,20 +23,25 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
-        cd ninjagame-backend
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Lint with flake8
       run: |
-        cd ninjagame-backend
         flake8
     - name: Coverage report
       run: |
-        cd ninjagame-backend
         pip install coverage
         coverage run manage.py test test
         coverage report
     - name: Run Tests
       run: |
-        cd ninjagame-backend
         python manage.py test test
+
+    - name: Install Docker
+      uses: docker/setup-buildx-action@v1
+    - name: Login to Docker
+      run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
+    - name: Build Image
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ninjagame-backend:latest .
+    - name: Push Image To DockerHub
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/ninjagame-backend:latest
