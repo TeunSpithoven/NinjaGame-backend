@@ -23,6 +23,10 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+##### Run the tests
+```
+python manage.py test test
+```
 
 ### API CALLS:
 

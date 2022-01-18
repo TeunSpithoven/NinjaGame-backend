@@ -29,5 +29,5 @@ class LoginIntegrationTestCase(TestCase):
         response = self.client.post('/auth/token/', login_data)
         jsonResponse = response.data
         self.assertNotEqual(response.status_code, 200)
-        # self.assertIsNotNone(jsonResponse["access"])
-        # self.assertIsNotNone(jsonResponse["refresh"])
+        self.assertIsNotNone(jsonResponse["detail"])
+        self.assertEqual(jsonResponse["detail"], "No active account found with the given credentials")
