@@ -30,18 +30,18 @@ python manage.py test test
 
 ### API CALLS:
 
-register: http://127.0.0.1:8000/auth/register/ username="USERNAME" password="PASSWORD" password2="PASSWORD"
+register: http://localhost:8000/auth/register/ username="USERNAME" password="PASSWORD" password2="PASSWORD"
 
-get token: http://127.0.0.1:8000/auth/token/ username="username" password="password"
+get token: http://localhost:8000/auth/token/ username="username" password="password"
 return: refresh & acces token
 
-refresh token: http://127.0.0.1:8000/auth/token/refresh/ refresh="REFRESH TOKEN"
+refresh token: http://localhost:8000/auth/token/refresh/ refresh="REFRESH TOKEN"
 
-add game: http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}" title="Ant Man and The Wasp" genre="Action" year=2018
+add game: http://localhost:8000/games/ "Authorization: Bearer {YOUR_TOKEN}" title="Ant Man and The Wasp" genre="Action" year=2018
 
-get all games: http://127.0.0.1:8000/games/ "Authorization: Bearer {YOUR_TOKEN}"
+get all games: http://localhost:8000/games/ "Authorization: Bearer {YOUR_TOKEN}"
 
-update game score: http://127.0.0.1:8000/game/{game_id}/ "Authorization: Bearer {YOUR_TOKEN}" score="SCORE"
+update game score: http://localhost:8000/game/{game_id}/ "Authorization: Bearer {YOUR_TOKEN}" score="SCORE"
 
 ### Docker
 the docker container can be found on docker hub at: tuin/ninjagame-backend
