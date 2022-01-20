@@ -3,15 +3,18 @@ from django.test import TestCase
 
 class RefreshIntegrationTestCase(TestCase):
     def setUp(self):
+        self.username = "refreshTestUser"
+        self.password = "passwordhutser1!"
+
         register_data = {
-            "username": "refreshTestUser",
-            "password": "passwordhutser1!",
-            "password2": "passwordhutser1!"
+            "username": self.username,
+            "password": self.password,
+            "password2": self.password
         }
         self.client.post('/auth/register/', register_data)
         login_data = {
-            "username": "refreshTestUser",
-            "password": "passwordhutser1!"
+            "username": self.username,
+            "password": self.password
         }
         response = self.client.post('/auth/token/', login_data)
         self.accessToken = response.data["refresh"]
