@@ -1,6 +1,6 @@
 ## NinjaGame-Backend
 This is the back-end web server for my school project.
-hopelijk ergens gedeployed
+hopelijk ergens gedeployed? heroku?
 
 ### Dev setup
 ##### clone this repo
