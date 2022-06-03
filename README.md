@@ -1,5 +1,6 @@
 ## NinjaGame-Backend
 This is the back-end web server for my school project.
+hopelijk ergens gedeployed
 
 ### Dev setup
 ##### clone this repo
